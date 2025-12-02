@@ -1,0 +1,24 @@
+// File: src/data/weeklies.json
+[
+  {
+    "id": "weekly-1",
+    "title": "Planificación semanal",
+    "description": "Define los objetivos clave de la semana",
+    "xp": 150,
+    "completed": false
+  },
+  {
+    "id": "weekly-2",
+    "title": "3 sesiones deep work",
+    "description": "Cumple tres sesiones de estudio profundo",
+    "xp": 300,
+    "completed": false
+  },
+  {
+    "id": "weekly-3",
+    "title": "Checklist hábitos",
+    "description": "Completa el checklist de hábitos de la semana",
+    "xp": 200,
+    "completed": false
+  }
+]

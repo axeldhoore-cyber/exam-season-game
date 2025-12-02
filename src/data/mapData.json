@@ -1,0 +1,57 @@
+{
+  "regions": [
+    {
+      "id": "library",
+      "name": "La Biblioteca",
+      "description": "El territorio principal de estudio.",
+      "missions": [
+        {
+          "id": "focus-1",
+          "title": "Focus Profundo I",
+          "description": "Mantén 60 minutos de concentración total.",
+          "difficulty": "Media",
+          "xp": 50,
+          "goal": "1 hora sin distracciones"
+        },
+        {
+          "id": "focus-2",
+          "title": "Focus Profundo II",
+          "description": "Sesión extendida de concentración.",
+          "difficulty": "Alta",
+          "xp": 80,
+          "goal": "90 minutos sin distracciones"
+        }
+      ]
+    },
+    {
+      "id": "gym",
+      "name": "El Gimnasio",
+      "description": "Donde se forja el cuerpo del estudiante de élite.",
+      "missions": [
+        {
+          "id": "gym-1",
+          "title": "Sesión Completa",
+          "description": "Entrena todo el cuerpo.",
+          "difficulty": "Media",
+          "xp": 40,
+          "goal": "1 sesión completa"
+        }
+      ]
+    },
+    {
+      "id": "home",
+      "name": "La Fortaleza",
+      "description": "El hogar convertido en base de energía.",
+      "missions": [
+        {
+          "id": "morning-1",
+          "title": "Mañana Perfecta",
+          "description": "Levántate a la hora y cumple tu rutina.",
+          "difficulty": "Media",
+          "xp": 30,
+          "goal": "Rutina completa"
+        }
+      ]
+    }
+  ]
+}

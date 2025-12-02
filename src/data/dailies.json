@@ -1,0 +1,23 @@
+// File: src/data/dailies.json
+{
+  "dailies": [
+    {
+      "id": "daily-1",
+      "title": "Completar 3 ciclos",
+      "xp": 50,
+      "done": false
+    },
+    {
+      "id": "daily-2",
+      "title": "0 distracciones",
+      "xp": 30,
+      "done": false
+    },
+    {
+      "id": "daily-3",
+      "title": "Dormir 7h+",
+      "xp": 20,
+      "done": false
+    }
+  ]
+}

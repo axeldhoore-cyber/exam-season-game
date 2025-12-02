@@ -1,0 +1,5 @@
+[
+  { "id": 1, "title": "Pomodoro x6", "description": "Completa 6 pomodoros." },
+  { "id": 2, "title": "Gym", "description": "Sesión de entrenamiento." },
+  { "id": 3, "title": "Lectura 20min", "description": "Lee un capítulo." }
+]

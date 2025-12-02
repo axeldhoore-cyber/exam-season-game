@@ -1,0 +1,7 @@
+[
+  { "id": 1, "name": "Cálculo I", "description": "Límites, derivadas, integrales." },
+  { "id": 2, "name": "Álgebra Lineal", "description": "Matrices, vectores, bases." },
+  { "id": 3, "name": "Física I", "description": "Cinemática, dinámica, trabajo." },
+  { "id": 4, "name": "Informática I", "description": "Programación, lógica, Python." },
+  { "id": 5, "name": "Química I", "description": "Estructura atómica, enlaces." }
+]
