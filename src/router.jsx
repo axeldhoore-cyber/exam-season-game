@@ -1,62 +1,55 @@
 // File: src/router.jsx
 
-import { createBrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-import MainLayout from "./layouts/MainLayout";
-
+// AUTH
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import SpecialLogin from "./pages/auth/SpecialLogin";
 
+// DASHBOARD
 import Dashboard from "./pages/dashboard/Dashboard";
 
+// MISSIONS
 import DailyMissions from "./pages/missions/DailyMissions";
 import WeeklyMissions from "./pages/missions/WeeklyMissions";
 import StudySubjects from "./pages/missions/StudySubjects";
 
+// MAP
 import WorldMap from "./pages/map/WorldMap";
 import RegionView from "./pages/map/RegionView";
 import MissionView from "./pages/map/MissionView";
 
+// PROGRESSION
 import AttributesPage from "./pages/progression/AttributesPage";
 import ProgressionCurve from "./pages/progression/ProgressionCurve";
 import StatsGraphs from "./pages/progression/StatsGraphs";
 
-import PVP from "./pages/challenges/PVP";
-import AchievementsPage from "./pages/achievements/AchievementsPage";
+export default function Router() {
+  return (
+    <Routes>
+      {/* AUTH */}
+      <Route path="/" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/special" element={<SpecialLogin />} />
 
-import ProtectedRoute from "./components/ProtectedRoute";
+      {/* DASHBOARD */}
+      <Route path="/dashboard" element={<Dashboard />} />
 
-const router = createBrowserRouter([
-  { path: "/", element: <Login /> },
-  { path: "/register", element: <Register /> },
-  { path: "/special-login", element: <SpecialLogin /> },
+      {/* MISSIONS */}
+      <Route path="/missions/daily" element={<DailyMissions />} />
+      <Route path="/missions/weekly" element={<WeeklyMissions />} />
+      <Route path="/missions/subjects" element={<StudySubjects />} />
 
-  {
-    element: (
-      <ProtectedRoute>
-        <MainLayout />
-      </ProtectedRoute>
-    ),
+      {/* MAP */}
+      <Route path="/map" element={<WorldMap />} />
+      <Route path="/map/region/:id" element={<RegionView />} />
+      <Route path="/map/mission/:id" element={<MissionView />} />
 
-    children: [
-      { path: "/dashboard", element: <Dashboard /> },
-      { path: "/missions/daily", element: <DailyMissions /> },
-      { path: "/missions/weekly", element: <WeeklyMissions /> },
-      { path: "/missions/subjects", element: <StudySubjects /> },
-
-      { path: "/map", element: <WorldMap /> },
-      { path: "/map/region/:regionId", element: <RegionView /> },
-      { path: "/map/mission/:missionId", element: <MissionView /> },
-
-      { path: "/progression/attributes", element: <AttributesPage /> },
-      { path: "/progression/curve", element: <ProgressionCurve /> },
-      { path: "/progression/stats", element: <StatsGraphs /> },
-
-      { path: "/challenges", element: <PVP /> },
-      { path: "/achievements", element: <AchievementsPage /> },
-    ],
-  },
-]);
-
-export default router;
+      {/* PROGRESSION */}
+      <Route path="/progression/attributes" element={<AttributesPage />} />
+      <Route path="/progression/curve" element={<ProgressionCurve />} />
+      <Route path="/progression/stats" element={<StatsGraphs />} />
+    </Routes>
+  );
+}

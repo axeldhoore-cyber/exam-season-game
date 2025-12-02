@@ -1,42 +1,18 @@
-import { useState } from "react";
+import { createContext, useContext } from "react";
+import useLeveling from "../hooks/useLeveling";
 
-export default function useLeveling() {
-  const [level, setLevel] = useState(1);
-  const [xp, setXp] = useState(0);
-  const [nextLevelXp, setNextLevelXp] = useState(100);
-  const [showLevelUp, setShowLevelUp] = useState(false);
+const LevelingContext = createContext();
 
-  function getRequiredXP(level) {
-    return Math.floor(100 * Math.pow(level, 1.5));
-  }
+export function LevelingProvider({ children }) {
+  const leveling = useLeveling();
 
-  function addXP(amount) {
-    let newXP = xp + amount;
+  return (
+    <LevelingContext.Provider value={leveling}>
+      {children}
+    </LevelingContext.Provider>
+  );
+}
 
-    if (newXP >= nextLevelXp) {
-      const newLevel = level + 1;
-      const newMax = getRequiredXP(newLevel);
-
-      setLevel(newLevel);
-      setNextLevelXp(newMax);
-      setShowLevelUp(true);
-
-      newXP = newXP - nextLevelXp;
-    }
-
-    setXp(newXP);
-  }
-
-  function closeLevelUp() {
-    setShowLevelUp(false);
-  }
-
-  return {
-    level,
-    xp,
-    nextLevelXp,
-    addXP,
-    showLevelUp,
-    closeLevelUp,
-  };
+export function useLevelingContext() {
+  return useContext(LevelingContext);
 }
