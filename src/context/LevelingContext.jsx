@@ -1,18 +1,52 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import useLeveling from "../hooks/useLeveling";
+// src/context/LevelingContext.jsx
 
-const LevelingContext = createContext();
+import { createContext, useState } from "react";
+
+export const LevelingContext = createContext();
 
 export function LevelingProvider({ children }) {
-  const leveling = useLeveling();
+  const [xp, setXP] = useState(0);
+  const [level, setLevel] = useState(1);
+  const [unspentAttributes, setUnspentAttributes] = useState(0);
+
+  // Calcula nivel a partir de XP (tu curva profesional)
+  const getLevelFromXP = (totalXP) => {
+    let lvl = 1;
+    let required = 50;
+
+    while (totalXP >= required) {
+      lvl++;
+      required = Math.floor(50 * Math.pow(lvl, 1.4));
+    }
+
+    return lvl;
+  };
+
+  // Añadir XP + detectar subida de nivel
+  const addXP = (amount) => {
+    const newXP = xp + amount;
+    const newLevel = getLevelFromXP(newXP);
+
+    setXP(newXP);
+    setLevel(newLevel);
+
+    if (newLevel > level) {
+      setUnspentAttributes((prev) => prev + 1);
+    }
+  };
 
   return (
-    <LevelingContext.Provider value={leveling}>
+    <LevelingContext.Provider
+      value={{
+        xp,
+        level,
+        unspentAttributes,
+        addXP,
+        setXP,
+        setLevel,
+      }}
+    >
       {children}
     </LevelingContext.Provider>
   );
-}
-
-export function useLevelingContext() {
-  return useContext(LevelingContext);
 }
