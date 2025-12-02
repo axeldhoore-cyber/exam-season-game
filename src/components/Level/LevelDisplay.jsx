@@ -1,26 +1,18 @@
-// File: src/components/Level/LevelDisplay.jsx
-import { useLevel } from "../../hooks/useLevel";
+import { useLevelingContext } from "../../context/LevelingContext";
+import { motion } from "framer-motion";
 
-export default function LevelDisplay({ totalXP }) {
-  const { level, progress, currentLevelXP, nextLevelXP } = useLevel(totalXP);
+export default function LevelDisplay() {
+  const { level } = useLevelingContext();
 
   return (
-    <div className="w-full p-4 bg-neutral-900 text-white rounded-xl flex flex-col gap-2">
-      <div className="flex justify-between">
-        <span className="text-lg font-bold">Level {level}</span>
-        <span className="text-sm">{Math.floor(progress)}%</span>
-      </div>
-
-      <div className="w-full h-3 bg-neutral-700 rounded-full overflow-hidden">
-        <div
-          className="h-full bg-green-500 transition-all"
-          style={{ width: `${progress}%` }}
-        ></div>
-      </div>
-
-      <div className="text-xs text-neutral-400">
-        {currentLevelXP} XP → {nextLevelXP} XP
-      </div>
-    </div>
+    <motion.div
+      className="px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg text-white text-xl font-semibold flex items-center gap-3"
+      initial={{ opacity: 0, scale: 0.9, y: 10 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ type: "spring", stiffness: 120, damping: 12 }}
+    >
+      <span className="text-white/60 text-sm">Nivel</span>
+      <span className="text-3xl font-bold text-white drop-shadow-xl">{level}</span>
+    </motion.div>
   );
 }
