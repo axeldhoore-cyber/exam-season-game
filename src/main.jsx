@@ -1,10 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+
 import App from "./App";
+
+// PROVIDERS
 import { SupabaseProvider } from "./supabase/SupabaseProvider";
 import { LevelingProvider } from "./context/LevelingContext";
-import { StatsProvider } from "./context/StatsContext";
+import { ModalProvider } from "./context/ModalContext";
+import { AchievementsProvider } from "./context/AchievementsContext";
+
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -12,9 +17,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <SupabaseProvider>
         <LevelingProvider>
-          <StatsProvider>
-            <App />
-          </StatsProvider>
+          <ModalProvider>
+            <AchievementsProvider>
+              <App />
+            </AchievementsProvider>
+          </ModalProvider>
         </LevelingProvider>
       </SupabaseProvider>
     </BrowserRouter>

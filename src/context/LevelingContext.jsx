@@ -1,5 +1,3 @@
-// src/context/LevelingContext.jsx
-
 import { createContext, useState } from "react";
 
 export const LevelingContext = createContext();
@@ -20,13 +18,18 @@ export function LevelingProvider({ children }) {
   };
 
   const addXP = (amount) => {
-    const newXP = xp + amount;
-    const newLevel = getLevelFromXP(newXP);
-    setXP(newXP);
+    setXP(prev => prev + amount);
+  };
+
+  const checkLevelUp = () => {
+    const newLevel = getLevelFromXP(xp);
     if (newLevel > level) {
+      const old = level;
       setLevel(newLevel);
       setUnspentAttributes(prev => prev + 1);
+      return { levelUp: true, old, new: newLevel };
     }
+    return { levelUp: false };
   };
 
   return (
@@ -36,8 +39,10 @@ export function LevelingProvider({ children }) {
         level,
         unspentAttributes,
         addXP,
+        checkLevelUp,
         setXP,
         setLevel,
+        setUnspentAttributes,
       }}
     >
       {children}

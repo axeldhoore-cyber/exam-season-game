@@ -1,5 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
+// MODALS (GLOBAL)
+import ModalRenderer from "./components/modals/ModalRenderer";
+
 // AUTH
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -28,32 +31,38 @@ import PVP from "./pages/challenges/PVP";
 
 export default function App() {
   return (
-    <Routes>
-      {/* AUTH */}
-      <Route path="/" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/special-login" element={<SpecialLogin />} />
+    <>
+      {/* MODAL GLOBAL (nivel máximo) */}
+      <ModalRenderer />
 
-      {/* DASHBOARD */}
-      <Route path="/dashboard" element={<Dashboard />} />
+      {/* SISTEMA DE RUTAS PRINCIPAL */}
+      <Routes>
+        {/* AUTH */}
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/special-login" element={<SpecialLogin />} />
 
-      {/* MISSIONS */}
-      <Route path="/missions/daily" element={<DailyMissions />} />
-      <Route path="/missions/weekly" element={<WeeklyMissions />} />
-      <Route path="/missions/subjects" element={<StudySubjects />} />
+        {/* DASHBOARD */}
+        <Route path="/dashboard" element={<Dashboard />} />
 
-      {/* PROGRESSION */}
-      <Route path="/progression/attributes" element={<AttributesPage />} />
-      <Route path="/progression/curve" element={<ProgressionCurve />} />
-      <Route path="/progression/stats" element={<StatsGraphs />} />
+        {/* MISSIONS */}
+        <Route path="/missions/daily" element={<DailyMissions />} />
+        <Route path="/missions/weekly" element={<WeeklyMissions />} />
+        <Route path="/missions/subjects" element={<StudySubjects />} />
 
-      {/* MAP */}
-      <Route path="/world" element={<WorldMap />} />
-      <Route path="/region/:id" element={<RegionView />} />
-      <Route path="/mission/:id" element={<MissionView />} />
+        {/* PROGRESSION */}
+        <Route path="/progression/attributes" element={<AttributesPage />} />
+        <Route path="/progression/curve" element={<ProgressionCurve />} />
+        <Route path="/progression/stats" element={<StatsGraphs />} />
 
-      {/* CHALLENGES */}
-      <Route path="/pvp" element={<PVP />} />
-    </Routes>
+        {/* MAP */}
+        <Route path="/world" element={<WorldMap />} />
+        <Route path="/region/:id" element={<RegionView />} />
+        <Route path="/mission/:id" element={<MissionView />} />
+
+        {/* CHALLENGES */}
+        <Route path="/pvp" element={<PVP />} />
+      </Routes>
+    </>
   );
 }

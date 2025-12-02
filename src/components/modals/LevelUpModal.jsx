@@ -12,17 +12,15 @@ export default function LevelUpModal({ oldLevel, newLevel }) {
 
   return (
     <div
-      className={`
-        transition-all duration-500
-        ${animate ? "scale-100 opacity-100" : "scale-75 opacity-0"}
-        bg-white/10 backdrop-blur-2xl border border-white/20 
-        shadow-2xl p-8 rounded-3xl text-center max-w-sm
-      `}
+      className={`transition-all duration-500 
+      ${animate ? "scale-100 opacity-100" : "scale-75 opacity-0"}
+      bg-white/10 border border-white/20 shadow-2xl backdrop-blur-2xl
+      p-8 rounded-3xl text-center max-w-sm`}
     >
       <h2 className="text-3xl font-bold mb-2">¡Nivel Subido!</h2>
 
       <p className="text-lg opacity-80 mb-4">
-        Nivel {oldLevel} → {newLevel}
+        Has pasado de nivel {oldLevel} → {newLevel}
       </p>
 
       <div className="flex justify-center gap-4 mb-6">
