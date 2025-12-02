@@ -1,11 +1,19 @@
-import MainLayout from "../../layouts/MainLayout";
-import WeeklyMissionsList from "../../components/missions/WeeklyMissionsList";
+// src/pages/missions/WeeklyMissions.jsx
+
+import React from "react";
+import useLeveling from "../../hooks/useLeveling";
 
 export default function WeeklyMissions() {
+  const { xp, level, addXP } = useLeveling();
+
+  // ... tu lógica de misiones semanales ...
+
   return (
-    <MainLayout>
-      <h1 className="text-3xl font-bold mb-6">Misiones Semanales</h1>
-      <WeeklyMissionsList />
-    </MainLayout>
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">Weekly Missions</h2>
+      <p>Level: {level}</p>
+      <p>XP: {xp}</p>
+      {/* ... resto del UI ... */}
+    </div>
   );
 }

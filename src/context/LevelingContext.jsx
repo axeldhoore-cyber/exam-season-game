@@ -9,29 +9,23 @@ export function LevelingProvider({ children }) {
   const [level, setLevel] = useState(1);
   const [unspentAttributes, setUnspentAttributes] = useState(0);
 
-  // Calcula nivel a partir de XP (tu curva profesional)
   const getLevelFromXP = (totalXP) => {
     let lvl = 1;
     let required = 50;
-
     while (totalXP >= required) {
       lvl++;
       required = Math.floor(50 * Math.pow(lvl, 1.4));
     }
-
     return lvl;
   };
 
-  // Añadir XP + detectar subida de nivel
   const addXP = (amount) => {
     const newXP = xp + amount;
     const newLevel = getLevelFromXP(newXP);
-
     setXP(newXP);
-    setLevel(newLevel);
-
     if (newLevel > level) {
-      setUnspentAttributes((prev) => prev + 1);
+      setLevel(newLevel);
+      setUnspentAttributes(prev => prev + 1);
     }
   };
 
