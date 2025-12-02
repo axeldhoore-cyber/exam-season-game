@@ -1,3 +1,4 @@
+// File: src/hooks/useLeveling.jsx
 import { useContext, useEffect } from "react";
 import { LevelingContext } from "../context/LevelingContext";
 import { useModal } from "../context/ModalContext";
@@ -12,10 +13,10 @@ export default function useLeveling() {
   const { xp, checkLevelUp } = ctx;
 
   useEffect(() => {
-    const result = checkLevelUp();
-    if (result?.levelUp) {
+    const r = checkLevelUp();
+    if (r?.levelUp) {
       openModal(
-        <LevelUpModal oldLevel={result.old} newLevel={result.new} />
+        <LevelUpModal oldLevel={r.old} newLevel={r.new} />
       );
     }
   }, [xp]);

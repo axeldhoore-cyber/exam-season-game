@@ -1,50 +1,37 @@
-import { useEffect, useState } from "react";
-import { useModal } from "../../context/ModalContext";
-import { Link } from "react-router-dom";
+// File: src/components/leveling/LevelUpModal.jsx
+import { motion } from "framer-motion";
 
 export default function LevelUpModal({ oldLevel, newLevel }) {
-  const { closeModal } = useModal();
-  const [animate, setAnimate] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setAnimate(true), 50);
-  }, []);
-
   return (
-    <div
-      className={`
-        transition-all duration-500
-        ${animate ? "scale-100 opacity-100" : "scale-75 opacity-0"}
-        bg-white/10 backdrop-blur-2xl border border-white/20 
-        shadow-2xl p-8 rounded-3xl text-center max-w-sm
-      `}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      className="backdrop-blur-xl bg-white/10 p-8 rounded-2xl shadow-xl border border-white/20 
+                 flex flex-col items-center gap-4 text-center"
     >
-      <h2 className="text-3xl font-bold mb-2">¡Nivel Subido!</h2>
+      <motion.h2 
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        className="text-4xl font-bold text-purple-300 drop-shadow-lg"
+      >
+        ¡Nivel {newLevel}!
+      </motion.h2>
 
-      <p className="text-lg opacity-80 mb-4">
-        Nivel {oldLevel} → {newLevel}
+      <p className="text-white/80 text-lg">
+        Has subido de nivel ({oldLevel} → {newLevel})
       </p>
 
-      <div className="flex justify-center gap-4 mb-6">
-        <span className="px-4 py-2 bg-purple-600/60 text-white rounded-xl">
-          +1 Atributo
-        </span>
-      </div>
-
-      <Link
-        to="/progression/attributes"
-        onClick={closeModal}
-        className="block bg-purple-600 hover:bg-purple-700 transition text-white px-4 py-2 rounded-xl mb-3"
+      <motion.div
+        initial={{ rotate: -10 }}
+        animate={{ rotate: 0 }}
+        className="w-24 h-24 rounded-xl bg-gradient-to-br from-purple-500/40 to-pink-500/40 
+                   backdrop-blur-md flex items-center justify-center text-4xl font-bold text-white shadow-lg"
       >
-        Asignar Atributos
-      </Link>
+        +1
+      </motion.div>
 
-      <button
-        onClick={closeModal}
-        className="text-white/70 hover:text-white transition"
-      >
-        Cerrar
-      </button>
-    </div>
+      <p className="text-white/60 text-sm">Punto de atributo desbloqueado</p>
+    </motion.div>
   );
 }
